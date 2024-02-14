@@ -40,13 +40,13 @@ source "googlecompute" "rhel-sie-demo" {
   use_os_login      = false
 
   source_image_family = "rhel-9"
-  image_name          = "rhel-9-sie-2024"
-  image_description   = "Packer built: SIE RHEL9 image"
+  image_name          = "rhel-9-sie-2024-ansible"
+  image_description   = "Packer built: SIE RHEL9 image for X application, customized with Ansible"
 }
 
 build {
   sources = ["sources.googlecompute.rhel-sie-demo"]
   provisioner "shell" {
-    script = "install_httpd.sh"
+    script = "preprocess.sh"
   }
 } 
